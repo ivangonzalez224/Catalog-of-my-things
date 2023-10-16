@@ -24,6 +24,14 @@ class Item
     genre.items << self unless genre.items.include?(self)
   end
 
+  def move_to_archive()
+    if can_be_archived?
+      @archived = true
+    end
+  end
+
+  private
+
   def can_be_archived?
     if Date.today.prev_year(10) < Date.parse(@publish_date)
       return false

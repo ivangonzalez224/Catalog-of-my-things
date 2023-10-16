@@ -4,7 +4,7 @@ require './classes/author/author_class'
 author1 = Author.new("John", "Doe")
 author2 = Author.new("Jane", "Smith")
 
-item1 = Item.new("12/12/2000")
+item1 = Item.new("12/12/2030")
 item2 = Item.new("11/11/2020")
 
 # Add items to authors
@@ -24,4 +24,4 @@ puts "Author of item2:"
 puts "  #{item2.author.first_name} #{item2.author.last_name}"
 
 puts "date"
-puts item1.can_be_archived?
+puts item1.move_to_archive
