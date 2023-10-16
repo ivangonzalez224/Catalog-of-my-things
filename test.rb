@@ -12,12 +12,10 @@ item1.add_author(author1)
 author1.add_item(item2)
 author2.add_item(item2)
 
-
-
 # Test the relationships
 puts "Items by #{author1.first_name}:"
 author1.items.each do |item|
-puts "  #{item.publish_date}"
+  puts "  #{item.publish_date}"
 end
 
 puts 'Author of item2:'
