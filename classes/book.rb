@@ -16,8 +16,8 @@ class Book < Item
   end
 end
 
-# book1 = Book.new('12/12/2000', 'brandeson' ,'good')
-# puts book1.publisher
-# puts book1.publish_date
-# puts book1.cover_state
-# puts book1.can_be_archived?
+book1 = Book.new('12/12/2000', 'Bloomsbury', 'bad')
+puts book1.publisher
+puts book1.publish_date
+puts book1.cover_state
+puts book1.can_be_archived?
