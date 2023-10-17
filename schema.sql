@@ -6,8 +6,12 @@ Create table Genre (
 
 Create table MusicAlbum (
   id int GENERATED ALWAYS AS IDENTITY,
-  item_id int,
+  label_id int,
+  genre_id int,
+  author_id int,
   on_spotify BOOLEAN,
-  CONSTRAINT FK_MUSICALBUM_ITEM_ID FOREIGN KEY (item_id) REFERENCES Item(id),
+  CONSTRAINT FK_MUSICALBUM_LABEL_ID FOREIGN KEY (label_id) REFERENCES Label(id),
+  CONSTRAINT FK_MUSICALBUM_GENRE_ID FOREIGN KEY (genre_id) REFERENCES Genre(id),
+  CONSTRAINT FK_MUSICALBUM_AUTHOR_ID FOREIGN KEY (author_id) REFERENCES Author(id),
   PRIMARY KEY (id) 
 );
