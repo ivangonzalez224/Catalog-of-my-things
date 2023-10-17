@@ -35,8 +35,15 @@ module CreateItems
     publish_date = enter_date
     print 'Enter the book publisher: '
     publisher = gets.chomp
-    print 'Enter the book cover state: '
-    cover_state = gets.chomp
+    print 'Enter the book cover state (good/bad): '
+    cover_state = gets.chomp.upcase
+    if cover_state == 'GOOD'
+      cover_state = true
+    elsif cover_state == 'BADD'
+      cover_state = false
+    else
+      puts 'Invalid option' 
+    end
     newBook = Book.new(publish_date, publisher, cover_state)
     label = create_label
     newBook.label = label
