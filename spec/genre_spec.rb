@@ -14,4 +14,14 @@ describe Genre do
       expect { Genre.new }.to raise_exception ArgumentError
     end
   end
+
+  context 'when adding a new item' do
+    it 'should have a list of items' do
+      genre = Genre.new('Salsa')
+      item = Item.new('2021-08-04')
+      genre.add_item(item)
+
+      expect(genre.items).to include(item)
+    end
+  end
 end
