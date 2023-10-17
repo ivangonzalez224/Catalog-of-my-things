@@ -14,6 +14,7 @@ module CreateItems
     print 'Enter the book cover state: '
     cover_state = gets.chomp
     newBook = Book.new(publish_date, publisher, cover_state)
+    @books << newBook
     puts 'Your book has been created'
   end
 end

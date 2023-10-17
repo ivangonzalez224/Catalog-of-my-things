@@ -95,8 +95,7 @@ class App
     option = gets.chomp.to_i
     case option
     when 1
-      myBook = add_book
-      @books << myBook
+      add_book
     when 2
       add_music_album
     when 3
