@@ -1,7 +1,9 @@
 require_relative 'modules/add_items'
+require_relative 'modules/list_items'
 
 class App
-    include CreateItems
+  include CreateItems
+  include ListItems
   def initialize
     @items = []
     @genres = []
@@ -15,7 +17,7 @@ class App
   def run
     puts 'Welcome!'
     loop do
-        operation0
+      operation0
     end
   end
 
@@ -38,7 +40,7 @@ class App
     when 3
       operation3
     when 4
-        exit_app
+      exit_app
     else
       puts 'Invalid option'
     end
@@ -59,7 +61,7 @@ class App
     when 3
       list_games
     when 4
-        operation0
+      operation0
     else
       puts 'Invalid option'
     end
@@ -80,7 +82,7 @@ class App
     when 3
       list_all_authors
     when 4
-        operation0
+      operation0
     else
       puts 'Invalid option'
     end
@@ -101,13 +103,13 @@ class App
     when 3
       add_game
     when 4
-        operation0
+      operation0
     else
       puts 'Invalid option'
     end
   end
 
-  def exit_app 
+  def exit_app
     puts 'Thank you for using the app!'
 
     exit
