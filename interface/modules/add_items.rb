@@ -1,5 +1,6 @@
 require './classes/book'
 require './classes/label'
+require './classes/music_album'
 
 module CreateItems 
 
@@ -42,4 +43,24 @@ module CreateItems
     @books << newBook
     puts 'Your book has been created'
   end
+
+  def add_music_album
+    print 'Enter the music album publish date: '
+    publish_date = gets.chomp
+    print 'Is the album on spotify? (Y/N): '
+    on_spotify = gets.chomp.upcase
+    if on_spotify == 'Y'
+      on_spotify = true
+    elsif on_spotify == 'N'
+      on_spotify = false
+    else
+      puts 'Invalid option' 
+    end
+    new_music_album = MusicAlbum.new(publish_date, on_spotify)
+    @music_album << new_music_album
+    puts 'The music album was created successfully'
+    puts @music_album
+  end 
+
+  def 
 end
