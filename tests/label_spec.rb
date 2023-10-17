@@ -14,6 +14,7 @@ describe Label do
       item1 = Item.new('12/12/2023')
       @label1.add_item(item1)
       expect(@label1.items.length).to eq(1)
+      expect(item1.label).to eq(@label1)
     end
   end
 end
