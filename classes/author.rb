@@ -1,5 +1,5 @@
 class Author
-  attr_accessor :items, :first_name, :last_name
+  attr_accessor :id, :items, :first_name, :last_name
 
   def initialize(first_name, last_name)
     @id = Random.rand(1..1000)
@@ -13,3 +13,8 @@ class Author
     item.author = self
   end
 end
+
+author1 = Author.new('J.K.', 'Rowling')
+puts author1.first_name
+puts author1.last_name
+puts author1.id
