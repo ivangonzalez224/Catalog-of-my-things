@@ -2,7 +2,7 @@ require './classes/label'
 require './classes/item'
 
 describe Label do
-  before(:each) do 
+  before(:each) do
     @label1 = Label.new('title', 'color')
   end
   context 'When testing the Label class' do
