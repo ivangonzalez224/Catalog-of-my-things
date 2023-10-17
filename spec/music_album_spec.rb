@@ -13,4 +13,14 @@ describe MusicAlbum do
       expect(music_album.on_spotify).to be true
     end
   end
+
+  context 'when calling the can_be_archived? method' do
+    describe MusicAlbum do
+      it 'should be able to archive music albums that are older than 10 years and are on Spotify' do
+        music_album = MusicAlbum.new('2010-08-04', true)
+
+        expect(music_album.can_be_archived?).to be true
+      end
+    end
+  end
 end
