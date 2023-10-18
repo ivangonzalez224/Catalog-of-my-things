@@ -3,6 +3,7 @@ require './classes/music_album'
 require './classes/genre'
 require './classes/author'
 require './classes/game'
+require './classes/label'
 require_relative 'add_category'
 
 module CreateItems
@@ -61,6 +62,21 @@ module CreateItems
   def add_game
     print 'Enter the game\'s publish date: '
     publish_date = gets.chomp
+    multiplayer = multiplayer_input
+    print 'Enter the date when it was last played at: '
+    last_played_at = gets.chomp
+    author = create_author
+    genre = create_genre
+    label = create_label
+    new_game = Game.new(publish_date, multiplayer, last_played_at)
+    new_game.add_author(author)
+    new_game.add_genre(genre)
+    new_game.add_label(label)
+    @games << new_game
+    puts 'The game was created successfully'
+  end
+
+  def multiplayer_input
     print 'Is it a multiplayer game? (yes, no): '
     multiplayer = gets.chomp
     if multiplayer == 'yes'
@@ -71,12 +87,6 @@ module CreateItems
       puts 'Invalid option'
       multiplayer = false
     end
-    print 'Enter the date when it was last played at: '
-    last_played_at = gets.chomp
-    new_game = Game.new(publish_date, multiplayer, last_played_at)
-    author = create_author
-    new_game.author = author
-    @games << new_game
-    puts '--> The game was created successfully'
+    multiplayer
   end
 end

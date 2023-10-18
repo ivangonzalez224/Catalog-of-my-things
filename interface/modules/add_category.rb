@@ -1,4 +1,6 @@
 require './classes/label'
+require './classes/genre'
+require './classes/author'
 
 module CreateCategory
   def create_label
