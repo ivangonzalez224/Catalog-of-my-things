@@ -1,5 +1,7 @@
 require 'json'
 require './classes/genre'
+require './classes/label'
+require './classes/author'
 
 module LoadCategories
   def load_genres
@@ -36,14 +38,10 @@ module LoadCategories
     file = File.read('data/authors.json')
     authors_hash = JSON.parse(file)
     authors_hash.each do |author|
-      @authors << Author.new(
-        author['first_name'],
-        author['last_name'],
-        author['id']
-      )
+      @authors << Author.new(author['first_name'], author['last_name'], author['id'])
     end
     puts 'Authors loaded:'
-    authors.each_with_index do |author, index|
+    @authors.each_with_index do |author, index|
       puts "#{index + 1}) ID: #{author.id}, First Name: #{author.first_name}, Last Name: #{author.last_name}"
     end
   end
