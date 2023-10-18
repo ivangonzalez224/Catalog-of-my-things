@@ -14,9 +14,3 @@ class Game < Item
     super && Date.today.prev_year(2) > Date.parse(@last_played_at)
   end
 end
-
-game1 = Game.new('2004/10/04', 'true', '2019/03/15')
-puts game1.publish_date
-puts game1.multiplayer
-puts game1.can_be_archived?
-puts game1.id
