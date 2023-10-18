@@ -33,10 +33,18 @@ module CreateItems
     print 'Enter the book publisher: '
     publisher = gets.chomp
     cover_state = nil
+    book_cover_state(cover_state)
+    new_book = Book.new(publish_date, publisher, cover_state)
+    label = create_label
+    new_book.label = label
+    @books << new_book
+    puts 'Your book has been created'
+  end
+
+  def book_cover_state(cover_state)
     loop do
       print 'Enter the book cover state (good/bad): '
       cover_state_input = gets.chomp.upcase
-  
       if cover_state_input == 'GOOD'
         cover_state = true
         break
@@ -47,11 +55,7 @@ module CreateItems
         puts 'Invalid option. Please enter "good" or "bad".'
       end
     end
-    new_book = Book.new(publish_date, publisher, cover_state)
-    label = create_label
-    new_book.label = label
-    @books << new_book
-    puts 'Your book has been created'
+    cover_state
   end
 
   def add_music_album

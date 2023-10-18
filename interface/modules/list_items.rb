@@ -7,7 +7,7 @@ module ListItems
   end
 
   def list_all_books
-    if @books.empty? 
+    if @books.empty?
       puts 'There are no books yet.'
     else
       puts 'Books:'
@@ -18,7 +18,7 @@ module ListItems
   end
 
   def list_all_labels
-    if @labels.empty? 
+    if @labels.empty?
       puts 'There are no labels yet.'
     else
       puts 'Labels:'
@@ -27,5 +27,4 @@ module ListItems
       end
     end
   end
-
 end
