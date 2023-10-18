@@ -28,6 +28,8 @@ class App
     puts 'Welcome!'
     load_genres
     load_music_album
+    load_labels
+    load_books
     loop do
       operation0
     end
@@ -124,6 +126,8 @@ class App
   def exit_app
     save_genre
     save_music_album
+    save_label
+    save_book
     puts 'Thank you for using the app!'
     exit
   end

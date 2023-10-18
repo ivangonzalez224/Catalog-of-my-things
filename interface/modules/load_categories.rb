@@ -15,4 +15,18 @@ module LoadCategories
       puts "#{index + 1}) ID: #{genre.id}, Name: #{genre.name}"
     end
   end
+
+  def load_labels
+    return unless File.exist?('data/labels.json')
+
+    file = File.read('data/labels.json')
+    labels_hash = JSON.parse(file)
+    labels_hash.each do |label|
+      @labels << Label.new(label['title'], label['color'], label['id'])
+    end
+    puts 'Labels loaded:'
+    @labels.each_with_index do |label, index|
+      puts "#{index + 1}) ID: #{label.id}, Title: #{label.title}, Color: #{label.color}"
+    end
+  end
 end

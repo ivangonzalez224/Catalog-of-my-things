@@ -20,4 +20,23 @@ module LoadItems
       puts "Is on spotify: #{album.on_spotify}, Genre: #{album.genre}"
     end
   end
+
+  def load_books
+    return unless File.exist?('data/book.json')
+
+    file = File.read('data/book.json')
+    book_hash = JSON.parse(file)
+    book_hash.each do |book|
+      new_book = Book.new(book['publish_date'], book['publisher'], book['cover_state'], book['label_id'],
+                                 book['id'])
+      saved_item = @labels.find { |el| el.id == new_book.label_id }
+      new_book.add_label(saved_item)
+      @books << new_book
+    end
+    puts 'Books loaded:'
+    @books.each_with_index do |book, index|
+      puts "#{index + 1}) ID: #{book.id}, Publish date: #{book.publish_date}"
+      puts "publisher: #{book.publisher}, Label: #{book.label}"
+    end
+  end
 end
