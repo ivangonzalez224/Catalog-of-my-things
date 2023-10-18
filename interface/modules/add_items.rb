@@ -1,6 +1,9 @@
 require './classes/book'
 require './classes/label'
 require './classes/music_album'
+require './classes/genre'
+require './classes/author'
+require './classes/game'
 
 module CreateItems
   def create_label
@@ -16,15 +19,6 @@ module CreateItems
 
     @labels << new_label
     new_label
-  end
-
-  def create_author
-    print 'Enter the book author first name : '
-    first_name = gets.chomp
-    print 'Enter the book author last name: '
-    last_name = gets.chomp
-    new_author = Author.new(first_name, last_name)
-    puts new_author
   end
 
   def add_book
@@ -58,6 +52,17 @@ module CreateItems
     cover_state
   end
 
+  def create_genre
+    print 'Enter the album genre: '
+    name = gets.chomp
+    new_genre = Genre.new(name)
+
+    return @genres.select { |genre| genre.name == name } if @genres.one? { |genre| genre.name == name }
+
+    @genres << new_genre
+    new_genre
+  end
+
   def add_music_album
     print 'Enter the music album publish date: '
     publish_date = gets.chomp
@@ -69,10 +74,48 @@ module CreateItems
       on_spotify = false
     else
       puts 'Invalid option'
+      on_spotify = false
     end
     new_music_album = MusicAlbum.new(publish_date, on_spotify)
+    genre = create_genre
+    new_music_album.genre = genre
     @music_album << new_music_album
     puts 'The music album was created successfully'
-    puts @music_album
+  end
+
+  def create_author
+    print 'Enter the author\'s first name: '
+    first_name = gets.chomp
+    print 'Enter the author\'s last name: '
+    last_name = gets.chomp
+    if @authors.any? { |author| author.first_name == first_name && author.last_name == last_name }
+      puts "The author #{first_name} #{last_name} already exists"
+    else
+      new_author = Author.new(first_name, last_name)
+      @authors << new_author
+    end
+    new_author
+  end
+
+  def add_game
+    print 'Enter the game\'s publish date: '
+    publish_date = gets.chomp
+    print 'Is it a multiplayer game? (yes, no): '
+    multiplayer = gets.chomp
+    if multiplayer == 'yes'
+      multiplayer = true
+    elsif multiplayer == 'no'
+      multiplayer = false
+    else
+      puts 'Invalid option'
+      multiplayer = false
+    end
+    print 'Enter the date when it was last played at: '
+    last_played_at = gets.chomp
+    new_game = Game.new(publish_date, multiplayer, last_played_at)
+    author = create_author
+    new_game.author = author
+    @games << new_game
+    puts '--> The game was created successfully'
   end
 end
