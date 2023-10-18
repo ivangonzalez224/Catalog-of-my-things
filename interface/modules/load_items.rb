@@ -1,5 +1,7 @@
 require 'json'
 require './classes/music_album'
+require './classes/book'
+require './classes/game'
 
 module LoadItems
   def load_music_album
@@ -36,6 +38,29 @@ module LoadItems
     @books.each_with_index do |book, index|
       puts "#{index + 1}) ID: #{book.id}, Publish date: #{book.publish_date}"
       puts "publisher: #{book.publisher}, Label: #{book.label}"
+    end
+  end
+
+  def load_games
+    return unless File.exist?('data/game.json')
+
+    file = File.read('data/game.json')
+    game_hash = JSON.parse(file)
+    game_hash.each do |game|
+      new_game = Game.new(game['publish_date'], game['multiplayer'], game['last_played_at'], game['id'])
+      saved_game_genre = @genres.find { |el| el.id == game['genre_id'] }
+      new_game.add_genre(saved_game_genre)
+      saved_game_label = @labels.find { |el| el.id == game['label_id'] }
+      new_game.add_label(saved_game_label)
+      saved_game_author = @authors.find { |el| el.id == game['author_id'] }
+      new_game.add_author(saved_game_author)
+      @games << new_game
+    end
+    puts 'Games loaded:'
+    @games.each_with_index do |game, index|
+      puts "#{index + 1}) ID: #{game.id}, Publish date: #{game.publish_date}"
+      puts "Multiplayer: #{game.multiplayer}, Last Played At: #{game.last_played_at}"
+      puts "Label: #{game.label}, Genre: #{game.genre}, Author: #{game.author}"
     end
   end
 end
