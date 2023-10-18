@@ -32,7 +32,6 @@ module CreateItems
     publish_date = gets.chomp
     print 'Enter the book publisher: '
     publisher = gets.chomp
-    print 'Enter the book cover state (good/bad): '
     cover_state = nil
     loop do
       print 'Enter the book cover state (good/bad): '
