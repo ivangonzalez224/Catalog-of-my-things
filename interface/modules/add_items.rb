@@ -1,6 +1,7 @@
 require './classes/book'
 require './classes/label'
 require './classes/music_album'
+require './classes/genre'
 
 module CreateItems
   def create_label
@@ -48,6 +49,17 @@ module CreateItems
     puts 'Your book has been created'
   end
 
+  def create_genre
+    print 'Enter the album genre: '
+    name = gets.chomp
+    new_genre = Genre.new(name)
+
+    return @genres.select { |genre| genre.name == name } if @genres.one? { |genre| genre.name == name }
+
+    @genres << new_genre
+    new_genre
+  end
+
   def add_music_album
     print 'Enter the music album publish date: '
     publish_date = gets.chomp
@@ -59,10 +71,12 @@ module CreateItems
       on_spotify = false
     else
       puts 'Invalid option'
+      on_spotify = false
     end
     new_music_album = MusicAlbum.new(publish_date, on_spotify)
+    genre = create_genre
+    new_music_album.genre = genre
     @music_album << new_music_album
     puts 'The music album was created successfully'
-    puts @music_album
   end
 end
