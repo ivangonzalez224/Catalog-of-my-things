@@ -5,7 +5,7 @@ module ListItems
     else
       puts 'Music Albums:'
       @music_album.each_with_index do |album, index|
-        puts "#{index + 1}) ID: #{album.id}, Genre: #{album.genre.name}"
+        puts "#{index + 1}) ID: #{album.id}, Genre: #{album.genre}"
         puts "   Publish date: #{album.publish_date}, Is on spotify: #{album.on_spotify}\n"
       end
     end

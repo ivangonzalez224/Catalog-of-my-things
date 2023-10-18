@@ -1,11 +1,19 @@
 require_relative 'modules/add_items'
 require_relative 'modules/list_items'
 require_relative 'modules/list_categories'
+require_relative 'modules/save_categories'
+require_relative 'modules/load_categories'
+require_relative 'modules/save_items'
+require_relative 'modules/load_items'
 
 class App
   include CreateItems
   include ListItems
   include ListCategories
+  include SaveCategories
+  include LoadCategories
+  include SaveItems
+  include LoadItems
   def initialize
     @items = []
     @genres = []
@@ -18,6 +26,8 @@ class App
 
   def run
     puts 'Welcome!'
+    load_genres
+    load_music_album
     loop do
       operation0
     end
@@ -112,6 +122,8 @@ class App
   end
 
   def exit_app
+    save_genre
+    save_music_album
     puts 'Thank you for using the app!'
     exit
   end
