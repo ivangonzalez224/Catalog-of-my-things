@@ -35,6 +35,8 @@ module SaveItems
           'publish_date' => game.publish_date,
           'multiplayer' => game.multiplayer,
           'last_played_at' => game.last_played_at,
+          'genre_id' => game.genre.id,
+          'label_id' => game.label.id,
           'author_id' => game.author.id }
       }.to_json
     end
