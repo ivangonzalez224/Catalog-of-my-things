@@ -22,7 +22,7 @@ module SaveItems
           'publish_date' => book.publish_date,
           'publisher' => book.publisher,
           'cover_state' => book.cover_state,
-          'label_id' => book.label_id }
+          'label_id' => book.label.id }
       }.to_json
     end
   end

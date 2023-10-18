@@ -14,13 +14,9 @@ module CreateItems
     publisher = gets.chomp
     cover_state = book_cover_state()
     label = create_label
-    puts 'a'
-    puts label.class
-    puts label.id
-    new_book = Book.new(publish_date, publisher, cover_state, label.id)
-    puts 'b'
-    puts new_book.label
+    new_book = Book.new(publish_date, publisher, cover_state)
     new_book.add_label(label)
+    puts new_book.label.id
     @books << new_book
     puts 'Your book has been created'
   end
