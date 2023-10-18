@@ -6,9 +6,9 @@ module CreateCategory
     title = gets.chomp
     print 'Enter the book color: '
     color = gets.chomp
-  
+
     existing_label = @labels.find { |el| el.title == title && el.color == color }
-  
+
     if existing_label
       existing_label
     else
