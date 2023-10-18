@@ -2,10 +2,10 @@ require_relative '../classes/author'
 require_relative '../classes/item'
 
 describe Author do
-  let(:author) { Author.new('Dan', 'Brown') }
+  let(:author) { Author.new('Dan', 'Brown', 123) }
 
   describe 'when initialized' do
-    it 'creates a new author with first name and last name' do
+    it 'creates a new author with first name and last name and id' do
       expect(author).to be_a(Author)
       expect(author.id).not_to be_nil
       expect(author.first_name).to eq('Dan')
