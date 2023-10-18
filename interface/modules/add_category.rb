@@ -6,13 +6,16 @@ module CreateCategory
     title = gets.chomp
     print 'Enter the book color: '
     color = gets.chomp
-    new_label = Label.new(title, color)
-    if @labels.one? { |el| el.title == title && el.color == color }
-      return @labels.select { |el| el.title == title && el.color == color }
-    end
 
-    @labels << new_label
-    new_label
+    existing_label = @labels.find { |el| el.title == title && el.color == color }
+
+    if existing_label
+      existing_label
+    else
+      new_label = Label.new(title, color)
+      @labels << new_label
+      new_label
+    end
   end
 
   def create_genre
