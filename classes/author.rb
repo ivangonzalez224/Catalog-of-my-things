@@ -13,8 +13,3 @@ class Author
     item.author = self
   end
 end
-
-author1 = Author.new('J.K.', 'Rowling')
-puts author1.first_name
-puts author1.last_name
-puts author1.id
