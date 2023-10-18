@@ -78,7 +78,6 @@ module CreateItems
     first_name = gets.chomp
     print 'Enter the author\'s last name: '
     last_name = gets.chomp
-  
     if @authors.any? { |author| author.first_name == first_name && author.last_name == last_name }
       puts "The author #{first_name} #{last_name} already exists"
     else
