@@ -51,9 +51,11 @@ module CreateItems
       puts 'Invalid option'
       on_spotify = false
     end
-    new_music_album = MusicAlbum.new(publish_date, on_spotify)
     genre = create_genre
-    new_music_album.genre = genre
+    new_music_album = MusicAlbum.new(publish_date, on_spotify, genre.id, genre.name)
+    new_music_album.genre_name = genre.name
+    new_music_album.add_genre(genre)
+
     @music_album << new_music_album
     puts 'The music album was created successfully'
   end
