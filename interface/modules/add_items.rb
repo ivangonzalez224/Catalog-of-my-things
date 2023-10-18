@@ -1,40 +1,19 @@
 require './classes/book'
-require './classes/label'
 require './classes/music_album'
 require './classes/genre'
 require './classes/author'
 require './classes/game'
+require_relative 'add_category'
 
 module CreateItems
-  def create_label
-    print 'Enter the book label title: '
-    title = gets.chomp
-    print 'Enter the book color: '
-    color = gets.chomp
-    new_label = Label.new(title, color)
-
-    if @labels.one? { |el| el.title == title && el.color == color }
-      return @labels.select { |el| el.title == title && el.color == color }
-    end
-
-    @labels << new_label
-    new_label
-  end
-
+  include CreateCategory
   def add_book
     print 'Enter publish date: '
     publish_date = gets.chomp
     print 'Enter the book publisher: '
     publisher = gets.chomp
-    print 'Enter the book cover state (good/bad): '
-    cover_state = gets.chomp.upcase
-    if cover_state == 'GOOD'
-      cover_state = true
-    elsif cover_state == 'BADD'
-      cover_state = false
-    else
-      puts 'Invalid option'
-    end
+    cover_state = nil
+    book_cover_state(cover_state)
     new_book = Book.new(publish_date, publisher, cover_state)
     label = create_label
     new_book.label = label
@@ -42,15 +21,21 @@ module CreateItems
     puts 'Your book has been created'
   end
 
-  def create_genre
-    print 'Enter the album genre: '
-    name = gets.chomp
-    new_genre = Genre.new(name)
-
-    return @genres.select { |genre| genre.name == name } if @genres.one? { |genre| genre.name == name }
-
-    @genres << new_genre
-    new_genre
+  def book_cover_state(cover_state)
+    loop do
+      print 'Enter the book cover state (good/bad): '
+      cover_state_input = gets.chomp.upcase
+      if cover_state_input == 'GOOD'
+        cover_state = true
+        break
+      elsif cover_state_input == 'BAD'
+        cover_state = false
+        break
+      else
+        puts 'Invalid option. Please enter "good" or "bad".'
+      end
+    end
+    cover_state
   end
 
   def add_music_album
@@ -71,20 +56,6 @@ module CreateItems
     new_music_album.genre = genre
     @music_album << new_music_album
     puts 'The music album was created successfully'
-  end
-
-  def create_author
-    print 'Enter the author\'s first name: '
-    first_name = gets.chomp
-    print 'Enter the author\'s last name: '
-    last_name = gets.chomp
-    if @authors.any? { |author| author.first_name == first_name && author.last_name == last_name }
-      puts "The author #{first_name} #{last_name} already exists"
-    else
-      new_author = Author.new(first_name, last_name)
-      @authors << new_author
-    end
-    new_author
   end
 
   def add_game
