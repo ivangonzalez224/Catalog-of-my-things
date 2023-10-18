@@ -1,13 +1,14 @@
 require_relative 'item'
 
 class MusicAlbum < Item
-  attr_accessor :on_spotify, :publish_date, :id, :genre
+  attr_accessor :on_spotify, :publish_date, :id, :genre_id, :genre_name
 
-  def initialize(publish_date, on_spotify, id = Random.rand(1..1000), genre = 'Jazz')
+  def initialize(publish_date, on_spotify, genre_id, genre_name, _id = Random.rand(1..1000))
     super(publish_date)
     @id = id
     @on_spotify = on_spotify
-    @genre = genre
+    @genre_name = genre_name
+    @genre_id = genre_id
   end
 
   def can_be_archived?

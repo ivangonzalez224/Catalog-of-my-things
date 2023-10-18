@@ -8,7 +8,11 @@ module LoadItems
     file = File.read('data/music_album.json')
     album_hash = JSON.parse(file)
     album_hash.each do |album|
-      @music_album << MusicAlbum.new(album['publish_date'], album['on_spotify'], album['id'], album['genre'])
+      new_album = MusicAlbum.new(album['publish_date'], album['on_spotify'], album['genre_id'], album['genre_name'], album['id'])
+      saved_genre = @genres.select{|el| el.id == new_album.genre_id}
+      puts saved_genre
+      saved_genre.add_item(new_album)
+      @music_album << new_album
     end
     puts 'Albums loaded:'
     @music_album.each_with_index do |album, index|
