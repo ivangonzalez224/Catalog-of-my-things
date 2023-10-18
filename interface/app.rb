@@ -52,7 +52,7 @@ class App
     puts " \n Select an option by number:"
     puts '1) List all books'
     puts '2) List all music albums'
-    puts '3) List of games'
+    puts '3) List all games'
     puts '4) Go back Main to Menu'
     option = gets.chomp.to_i
     case option
@@ -61,7 +61,7 @@ class App
     when 2
       list_all_music_albums
     when 3
-      list_games
+      list_all_games
     when 4
       operation0
     else
@@ -73,7 +73,7 @@ class App
     puts " \n Select an option by number:"
     puts '1) List all genres (e.g \'Comedy\', \'Thriller\')'
     puts '2) List all labels (e.g. \'Gift\', \'New\')'
-    puts '3) List of authors (e.g. \'Stephen King\')'
+    puts '3) List all authors (e.g. \'Stephen King\')'
     puts '4) Go back Main to Menu'
     option = gets.chomp.to_i
     case option
@@ -113,7 +113,6 @@ class App
 
   def exit_app
     puts 'Thank you for using the app!'
-
     exit
   end
 end
