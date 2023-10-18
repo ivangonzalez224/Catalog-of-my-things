@@ -1,9 +1,11 @@
 require_relative 'modules/add_items'
 require_relative 'modules/list_items'
+require_relative 'modules/list_categories'
 
 class App
   include CreateItems
   include ListItems
+  include ListCategories
   def initialize
     @items = []
     @genres = []
@@ -69,9 +71,9 @@ class App
 
   def operation2
     puts " \n Select an option by number:"
-    puts '1) List all genres'
-    puts '2) List all labels'
-    puts '3) List of authors'
+    puts '1) List all genres (e.g \'Comedy\', \'Thriller\')'
+    puts '2) List all labels (e.g. \'Gift\', \'New\')'
+    puts '3) List of authors (e.g. \'Stephen King\')'
     puts '4) Go back Main to Menu'
     option = gets.chomp.to_i
     case option
