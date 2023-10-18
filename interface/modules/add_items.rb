@@ -3,7 +3,6 @@ require './classes/label'
 require './classes/music_album'
 require './classes/genre'
 
-
 module CreateItems
   def create_label
     print 'Enter the book label title: '
@@ -55,9 +54,7 @@ module CreateItems
     name = gets.chomp
     new_genre = Genre.new(name)
 
-    if @genres.one? { |genre| genre.name == name }
-      return @genres.select { |genre| genre.name == name }
-    end
+    return @genres.select { |genre| genre.name == name } if @genres.one? { |genre| genre.name == name }
 
     @genres << new_genre
     new_genre
@@ -81,6 +78,5 @@ module CreateItems
     new_music_album.genre = genre
     @music_album << new_music_album
     puts 'The music album was created successfully'
-    puts @music_album
   end
 end
