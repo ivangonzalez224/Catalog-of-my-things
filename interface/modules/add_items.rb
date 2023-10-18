@@ -55,7 +55,7 @@ module CreateItems
     new_music_album = MusicAlbum.new(publish_date, on_spotify, genre.id, genre.name)
     new_music_album.genre_name = genre.name
     new_music_album.add_genre(genre)
-    
+
     @music_album << new_music_album
     puts 'The music album was created successfully'
   end

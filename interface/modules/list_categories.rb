@@ -6,7 +6,7 @@ module ListCategories
       puts 'Genres:'
       @genres.each_with_index do |genre, index|
         puts "#{index + 1}) ID: #{genre.id}, Name: #{genre.name}"
-        puts "#{genre.items}"
+        puts genre.items
       end
     end
   end

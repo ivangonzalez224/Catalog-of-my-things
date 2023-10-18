@@ -9,8 +9,7 @@ module SaveItems
           'publish_date' => album.publish_date,
           'on_spotify' => album.on_spotify,
           'genre_name' => album.genre_name,
-          'genre_id' => album.genre_id
-          }
+          'genre_id' => album.genre_id }
       }.to_json
     end
   end
