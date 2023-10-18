@@ -29,4 +29,22 @@ module LoadCategories
       puts "#{index + 1}) ID: #{label.id}, Title: #{label.title}, Color: #{label.color}"
     end
   end
+
+  def load_authors
+    return unless File.exist?('data/authors.json')
+
+    file = File.read('data/authors.json')
+    authors_hash = JSON.parse(file)
+    authors_hash.each do |author|
+      @authors << Author.new(
+        author['first_name'],
+        author['last_name'],
+        author['id']
+      )
+    end
+    puts 'Authors loaded:'
+    authors.each_with_index do |author, index|
+      puts "#{index + 1}) ID: #{author.id}, First Name: #{author.first_name}, Last Name: #{author.last_name}"
+    end
+  end
 end
