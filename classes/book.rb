@@ -15,10 +15,3 @@ class Book < Item
     false
   end
 end
-
-book1 = Book.new('12/12/2000', 'Bloomsbury', 'bad')
-puts book1.publisher
-puts book1.publish_date
-puts book1.cover_state
-puts book1.can_be_archived?
-puts book1.id
