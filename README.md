@@ -59,7 +59,7 @@
 
  The link to the project presentation video:
 
-- [Project presentation video](https://github.com/ivangonzalez224/Catalog-of-my-things/assets/128931752/ee63c2f2-ebbb-452e-8363-6f14b6fc04ca)
+- [Project presentation video](https://clipchamp.com/watch/7CO7UmLJvQV)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
