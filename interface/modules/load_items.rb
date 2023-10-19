@@ -14,6 +14,10 @@ module LoadItems
                                  album['id'])
       saved_item = @genres.find { |el| el.id == new_album.genre_id }
       new_album.add_genre(saved_item)
+      saved_album_label = @labels.find { |el| el.id == album['label_id'] }
+      new_album.add_label(saved_album_label)
+      saved_album_author = @authors.find { |el| el.id == album['author_id'] }
+      new_album.add_author(saved_album_author)
       @music_album << new_album
     end
     # puts 'Albums loaded:'
