@@ -14,7 +14,7 @@ module CreateItems
     print 'Enter the book publisher: '
     publisher = gets.chomp
     cover_state = book_cover_state
-    label = create_label
+    label = create_label('book')
     new_book = Book.new(publish_date, publisher, cover_state)
     new_book.add_label(label)
     puts new_book.label.id
@@ -51,8 +51,8 @@ module CreateItems
       on_spotify = false
     end
     author = create_author
-    genre = create_genre
-    label = create_label
+    genre = create_genre('album')
+    label = create_label('album')
     new_music_album = MusicAlbum.new(publish_date, on_spotify, genre.id, genre.name)
     new_music_album.genre_name = genre.name
     new_music_album.add_author(author)
@@ -69,8 +69,8 @@ module CreateItems
     print 'Enter the date when it was last played at: '
     last_played_at = gets.chomp
     author = create_author
-    genre = create_genre
-    label = create_label
+    genre = create_genre('game')
+    label = create_label('game')
     new_game = Game.new(publish_date, multiplayer, last_played_at)
     new_game.add_author(author)
     new_game.add_genre(genre)

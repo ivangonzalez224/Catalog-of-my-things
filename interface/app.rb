@@ -28,10 +28,10 @@ class App
   def run
     puts 'Welcome!'
     load_genres
-    load_music_album
     load_labels
     load_books
     load_authors
+    load_music_album
     load_games
     loop do
       operation0

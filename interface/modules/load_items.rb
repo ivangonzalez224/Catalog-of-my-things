@@ -20,11 +20,11 @@ module LoadItems
       new_album.add_author(saved_album_author)
       @music_album << new_album
     end
-    # puts 'Albums loaded:'
-    # @music_album.each_with_index do |album, index|
-    #   puts "#{index + 1}) ID: #{album.id}, Publish date: #{album.publish_date}"
-    #   puts "Is on spotify: #{album.on_spotify}, Genre: #{album.genre}"
-    # end
+    puts 'Albums loaded:'
+    @music_album.each_with_index do |album, index|
+      puts "#{index + 1}) ID: #{album.id}, Publish date: #{album.publish_date}"
+      puts "Is on spotify: #{album.on_spotify}, Genre: #{album.genre}"
+    end
   end
 
   def load_books
