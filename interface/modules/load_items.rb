@@ -46,7 +46,7 @@ module LoadItems
     item.add_label(saved_label)
     saved_genre = @genres.find { |el| el.id == genre_id }
     item.add_genre(saved_genre)
-    saved_author = @authors.find { |el| el.id == author_id}
+    saved_author = @authors.find { |el| el.id == author_id }
     item.add_author(saved_author)
   end
 end
