@@ -26,7 +26,7 @@ class App
   end
 
   def run
-    puts 'Welcome!'
+    puts 'Welcome to our catalog!'
     load_genres
     load_labels
     load_authors
