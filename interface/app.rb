@@ -14,6 +14,7 @@ class App
   include LoadCategories
   include SaveItems
   include LoadItems
+
   def initialize
     @items = []
     @genres = []
@@ -30,6 +31,8 @@ class App
     load_music_album
     load_labels
     load_books
+    load_authors
+    load_games
     loop do
       operation0
     end
@@ -128,6 +131,8 @@ class App
     save_music_album
     save_label
     save_book
+    save_author
+    save_game
     puts 'Thank you for using the app!'
     exit
   end
