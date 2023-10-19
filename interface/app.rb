@@ -29,8 +29,8 @@ class App
     puts 'Welcome!'
     load_genres
     load_labels
-    load_books
     load_authors
+    load_books
     load_music_album
     load_games
     loop do

@@ -21,7 +21,6 @@ module CreateItems
     new_book.add_label(label)
     new_book.add_genre(genre)
     new_book.add_author(author)
-    puts new_book.label.id
     @books << new_book
     puts 'Your book has been created'
   end

@@ -25,6 +25,8 @@ module SaveItems
           'publish_date' => book.publish_date,
           'publisher' => book.publisher,
           'cover_state' => book.cover_state,
+          'genre_id' => book.genre.id,
+          'author_id' => book.author.id,
           'label_id' => book.label.id }
       }.to_json
     end
