@@ -40,16 +40,7 @@ module CreateItems
   def add_music_album
     print 'Enter the music album publish date: '
     publish_date = gets.chomp
-    print 'Is the album on spotify? (Y/N): '
-    on_spotify = gets.chomp.upcase
-    if on_spotify == 'Y'
-      on_spotify = true
-    elsif on_spotify == 'N'
-      on_spotify = false
-    else
-      puts 'Invalid option'
-      on_spotify = false
-    end
+    on_spotify = on_spotify_input
     author = create_author
     genre = create_genre('album')
     label = create_label('album')
@@ -60,6 +51,20 @@ module CreateItems
     new_music_album.add_label(label)
     @music_album << new_music_album
     puts 'The music album was created successfully'
+  end
+
+  def on_spotify_input
+    print 'Is the album on spotify? (Y/N): '
+    on_spotify = gets.chomp.upcase
+    if on_spotify == 'Y'
+      on_spotify = true
+    elsif on_spotify == 'N'
+      on_spotify = false
+    else
+      puts 'Invalid option'
+      on_spotify = false
+    end
+    on_spotify
   end
 
   def add_game
