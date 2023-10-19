@@ -11,7 +11,9 @@ module SaveItems
           'publish_date' => album.publish_date,
           'on_spotify' => album.on_spotify,
           'genre_name' => album.genre_name,
-          'genre_id' => album.genre_id }
+          'genre_id' => album.genre_id,
+          'label_id' => album.label.id,
+          'author_id' => album.author.id }
       }.to_json
     end
   end

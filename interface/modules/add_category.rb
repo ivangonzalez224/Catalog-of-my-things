@@ -3,10 +3,10 @@ require './classes/genre'
 require './classes/author'
 
 module CreateCategory
-  def create_label
-    print 'Enter the book label title: '
+  def create_label(item_add)
+    print "Enter the #{item_add} label title: "
     title = gets.chomp
-    print 'Enter the book color: '
+    print "Enter the #{item_add} color: "
     color = gets.chomp
 
     existing_label = @labels.find { |el| el.title == title && el.color == color }
@@ -20,8 +20,8 @@ module CreateCategory
     end
   end
 
-  def create_genre
-    print 'Enter the album genre: '
+  def create_genre(item_add)
+    print "Enter the #{item_add} genre: "
     name = gets.chomp
     new_genre = Genre.new(name)
     return @genres.select { |genre| genre.name == name } if @genres.one? { |genre| genre.name == name }

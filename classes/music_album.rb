@@ -1,7 +1,7 @@
 require_relative 'item'
 
 class MusicAlbum < Item
-  attr_accessor :on_spotify, :publish_date, :id, :genre_id, :genre_name
+  attr_accessor :on_spotify, :publish_date, :id, :genre_id, :genre_name, :author, :label
 
   def initialize(publish_date, on_spotify, genre_id, genre_name, _id = Random.rand(1..1000))
     super(publish_date)

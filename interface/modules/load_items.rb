@@ -14,13 +14,17 @@ module LoadItems
                                  album['id'])
       saved_item = @genres.find { |el| el.id == new_album.genre_id }
       new_album.add_genre(saved_item)
+      saved_album_label = @labels.find { |el| el.id == album['label_id'] }
+      new_album.add_label(saved_album_label)
+      saved_album_author = @authors.find { |el| el.id == album['author_id'] }
+      new_album.add_author(saved_album_author)
       @music_album << new_album
     end
-    # puts 'Albums loaded:'
-    # @music_album.each_with_index do |album, index|
-    #   puts "#{index + 1}) ID: #{album.id}, Publish date: #{album.publish_date}"
-    #   puts "Is on spotify: #{album.on_spotify}, Genre: #{album.genre}"
-    # end
+    puts 'Albums loaded:'
+    @music_album.each_with_index do |album, index|
+      puts "#{index + 1}) ID: #{album.id}, Publish date: #{album.publish_date}"
+      puts "Is on spotify: #{album.on_spotify}, Genre: #{album.genre}"
+    end
   end
 
   def load_books
