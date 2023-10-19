@@ -23,6 +23,7 @@ Create table MusicAlbum (
   label_id int,
   genre_id int,
   author_id int,
+  publish_date DATE,
   on_spotify BOOLEAN,
   CONSTRAINT FK_MUSICALBUM_LABEL_ID FOREIGN KEY (label_id) REFERENCES Label(id),
   CONSTRAINT FK_MUSICALBUM_GENRE_ID FOREIGN KEY (genre_id) REFERENCES Genre(id),
@@ -31,11 +32,16 @@ Create table MusicAlbum (
 );
 
 CREATE TABLE Game (
-  id INT,
+  id int GENERATED ALWAYS AS IDENTITY,
+  label_id int,
+  genre_id int,
+  author_id int,
   publish_date DATE,
   multiplayer VARCHAR(100),
   last_played_at DATE,
-  author_id INT REFERENCES Author(id),
+  CONSTRAINT FK_GAME_LABEL_ID FOREIGN KEY (label_id) REFERENCES Label(id),
+  CONSTRAINT FK_GAME_GENRE_ID FOREIGN KEY (genre_id) REFERENCES Genre(id),
+  CONSTRAINT FK_GAME_AUTHOR_ID FOREIGN KEY (author_id) REFERENCES Author(id),
   PRIMARY KEY(id)
 );
 
@@ -44,9 +50,9 @@ Create table Book (
   label_id int,
   genre_id int,
   author_id int,
-  publish_date date,
-  publisher varchar(100),
-  cover_state varchar(100),
+  publish_date DATE,
+  publisher VARCHAR(100),
+  cover_state VARCHAR(100),
   CONSTRAINT FK_BOOK_LABEL_ID FOREIGN KEY (label_id) REFERENCES Label(id),
   CONSTRAINT FK_BOOK_GENRE_ID FOREIGN KEY (genre_id) REFERENCES Genre(id),
   CONSTRAINT FK_BOOK_AUTHOR_ID FOREIGN KEY (author_id) REFERENCES Author(id),

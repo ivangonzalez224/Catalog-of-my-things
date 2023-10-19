@@ -35,12 +35,16 @@ module CreateCategory
     first_name = gets.chomp
     print 'Enter the author\'s last name: '
     last_name = gets.chomp
-    if @authors.any? { |author| author.first_name == first_name && author.last_name == last_name }
-      puts "The author #{first_name} #{last_name} already exists"
-    else
-      new_author = Author.new(first_name, last_name)
-      @authors << new_author
+    new_author = Author.new(first_name, last_name)
+    if @authors.one? do |author|
+         author.first_name == first_name && author.last_name == last_name
+       end
+      return @authors.select do |author|
+               author.first_name == first_name && author.last_name == last_name
+             end
     end
+
+    @authors << new_author
     new_author
   end
 end

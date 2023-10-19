@@ -26,11 +26,11 @@ class App
   end
 
   def run
-    puts 'Welcome!'
+    puts 'Welcome to our catalog!'
     load_genres
     load_labels
-    load_books
     load_authors
+    load_books
     load_music_album
     load_games
     loop do

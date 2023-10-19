@@ -14,10 +14,13 @@ module CreateItems
     print 'Enter the book publisher: '
     publisher = gets.chomp
     cover_state = book_cover_state
-    label = create_label('book')
+    author = create_author
+    genre = create_genre('album')
+    label = create_label('album')
     new_book = Book.new(publish_date, publisher, cover_state)
     new_book.add_label(label)
-    puts new_book.label.id
+    new_book.add_genre(genre)
+    new_book.add_author(author)
     @books << new_book
     puts 'Your book has been created'
   end
